@@ -39,8 +39,8 @@ $wgResourceBasePath = $wgScriptPath;
 ## The URL paths to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
 $wgLogos = [
-	'1x' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
-	'icon' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
+	'1x' => "$wgResourceBasePath/images/logos/wiki.svg",
+	'icon' => "$wgResourceBasePath/images/logos/wiki.svg",
 ];
 
 ## UPO means: this is also a user preference option
@@ -48,8 +48,8 @@ $wgLogos = [
 $wgEnableEmail = true;
 $wgEnableUserEmail = true; # UPO
 
-$wgEmergencyContact = "";
-$wgPasswordSender = "";
+$wgEmergencyContact = "webmestre@wikiromandie.org";
+$wgPasswordSender = "no-reply@wikiromandie.org";
 
 $wgEnotifUserTalk = false; # UPO
 $wgEnotifWatchlist = false; # UPO
@@ -100,7 +100,7 @@ $wgLocaltimezone = "Europe/Zurich";
 ## Set $wgCacheDirectory to a writable directory on the web server
 ## to make your wiki go slightly faster. The directory should not
 ## be publicly accessible from the web.
-#$wgCacheDirectory = "$IP/cache";
+$wgCacheDirectory = "$IP/cache";
 
 $wgSecretKey = getenv('WGSECRETKEY');
 

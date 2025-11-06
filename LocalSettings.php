@@ -15,9 +15,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit;
 }
 
-
-
-
 ## Uncomment this to disable output compression
 # $wgDisableOutputCompression = true;
 
@@ -136,6 +133,14 @@ wfLoadSkin( 'Vector' );
 
 # End of automatically generated settings.
 # Add more configuration options below.
+
+wfLoadExtensions([ 'ConfirmEdit' ]);
+wfLoadExtensions([ 'ConfirmEdit/QuestyCaptcha' ]);
+$wgCaptchaClass = 'QuestyCaptcha';
+
+$wgCaptchaQuestions = [
+    "Combien de cantons ont le français comme langue officielle? <a href=\"https://wikiromandie.org/index.php?title=Romandie\" alt=\"Cantons parlant le français\">Cantons de la Romandie</a><br><i>Écrire la réponse en toute lettres minuscule.</i>" => "sept"
+];
 
 
 #= GROUPES

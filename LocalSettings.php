@@ -134,6 +134,8 @@ wfLoadSkin( 'Vector' );
 # End of automatically generated settings.
 # Add more configuration options below.
 
+#==================================================================
+# Captcha
 wfLoadExtensions([ 'ConfirmEdit' ]);
 wfLoadExtensions([ 'ConfirmEdit/QuestyCaptcha' ]);
 $wgCaptchaClass = 'QuestyCaptcha';
@@ -142,7 +144,12 @@ $wgCaptchaQuestions = [
     "Combien de cantons ont le français comme langue officielle? <a href=\"https://wikiromandie.org/index.php?title=Romandie\" alt=\"Cantons parlant le français\">Cantons de la Romandie</a><br><i>Écrire la réponse en toute lettres minuscule.</i>" => "sept"
 ];
 
+#==================================================================
+# Infobox
+wfLoadExtension( 'Scribunto' );
+$wgScribuntoDefaultEngine = 'luastandalone';
 
+#==================================================================
 #= GROUPES
 
 # Groupe 0 : Pas connecté

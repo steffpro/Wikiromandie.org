@@ -150,6 +150,10 @@ wfLoadExtension( 'Scribunto' );
 $wgScribuntoDefaultEngine = 'luastandalone';
 
 #==================================================================
+# <ref> via Cite
+wfLoadExtension( 'Cite' );
+
+#==================================================================
 #= GROUPES
 
 # Groupe 0 : Pas connecté

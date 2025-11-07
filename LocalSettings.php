@@ -134,7 +134,28 @@ wfLoadSkin( 'Vector' );
 # End of automatically generated settings.
 # Add more configuration options below.
 
+
 #==================================================================
+#============ MAIL ============
+# SMTP
+$wgSMTP = [
+    'host'      => getenv('SMTPHOST'),
+    'IDHost'    => getenv('SMTPIDHOST'),
+    'localhost' => getenv('SMTPLOCALHOST'),
+    'port'      => getenv('SMTPPORT'),
+    'auth'      => true,
+    'username'  => getenv('SMTPUSERNAME'),
+    'password'  => getenv('SMTPPASSWORD')
+];
+
+#==================================================================
+#============ Extensions ============
+# Nuke
+wfLoadExtension( 'Nuke' );
+
+# VisualEditor
+wfLoadExtension( 'VisualEditor' );
+
 # Captcha
 wfLoadExtensions([ 'ConfirmEdit' ]);
 wfLoadExtensions([ 'ConfirmEdit/QuestyCaptcha' ]);
@@ -144,12 +165,10 @@ $wgCaptchaQuestions = [
     "Combien de cantons ont le français comme langue officielle? <a href=\"https://wikiromandie.org/index.php?title=Romandie\" alt=\"Cantons parlant le français\">Cantons de la Romandie</a><br><i>Écrire la réponse en toute lettres minuscule.</i>" => "sept"
 ];
 
-#==================================================================
 # Infobox
 wfLoadExtension( 'Scribunto' );
 $wgScribuntoDefaultEngine = 'luastandalone';
 
-#==================================================================
 # <ref> via Cite
 wfLoadExtension( 'Cite' );
 

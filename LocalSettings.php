@@ -145,7 +145,7 @@ $wgSMTP = [
     'port'      => getenv('SMTPPORT'),
     'auth'      => true,
     'username'  => getenv('SMTPUSERNAME'),
-    'password'  => getenv('SMTPPASSWORD')'
+    'password'  => getenv('SMTPPASSWORD')
 ];
 
 #==================================================================

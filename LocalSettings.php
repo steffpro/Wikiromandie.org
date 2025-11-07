@@ -172,6 +172,10 @@ $wgScribuntoDefaultEngine = 'luastandalone';
 # <ref> via Cite
 wfLoadExtension( 'Cite' );
 
+# ParserFunctions
+wfLoadExtension( 'ParserFunctions' );
+$wgPFEnableStringFunctions = true;
+
 #==================================================================
 #= GROUPES
 

@@ -15,9 +15,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit;
 }
 
-
-
-
 ## Uncomment this to disable output compression
 # $wgDisableOutputCompression = true;
 
@@ -39,8 +36,8 @@ $wgResourceBasePath = $wgScriptPath;
 ## The URL paths to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
 $wgLogos = [
-	'1x' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
-	'icon' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
+	'1x' => "$wgResourceBasePath/images/logos/wiki.svg",
+	'icon' => "$wgResourceBasePath/images/logos/wiki.svg",
 ];
 
 ## UPO means: this is also a user preference option
@@ -48,8 +45,8 @@ $wgLogos = [
 $wgEnableEmail = true;
 $wgEnableUserEmail = true; # UPO
 
-$wgEmergencyContact = "";
-$wgPasswordSender = "";
+$wgEmergencyContact = "webmestre@wikiromandie.org";
+$wgPasswordSender = "no-reply@wikiromandie.org";
 
 $wgEnotifUserTalk = false; # UPO
 $wgEnotifWatchlist = false; # UPO
@@ -79,12 +76,12 @@ $wgMemCachedServers = [];
 
 ## To enable image uploads, make sure the 'images' directory
 ## is writable, then set this to true:
-$wgEnableUploads = false;
-#$wgUseImageMagick = true;
-#$wgImageMagickConvertCommand = "/usr/bin/convert";
+$wgEnableUploads = true;
+$wgUseImageMagick = true;
+$wgImageMagickConvertCommand = "/usr/bin/convert";
 
 # InstantCommons allows wiki to use images from https://commons.wikimedia.org
-$wgUseInstantCommons = false;
+$wgUseInstantCommons = true;
 
 # Periodically send a pingback to https://www.mediawiki.org/ with basic data
 # about this MediaWiki instance. The Wikimedia Foundation shares this data
@@ -95,12 +92,12 @@ $wgPingback = true;
 $wgLanguageCode = "fr";
 
 # Time zone
-$wgLocaltimezone = "UTC";
+$wgLocaltimezone = "Europe/Zurich";
 
 ## Set $wgCacheDirectory to a writable directory on the web server
 ## to make your wiki go slightly faster. The directory should not
 ## be publicly accessible from the web.
-#$wgCacheDirectory = "$IP/cache";
+$wgCacheDirectory = "$IP/cache";
 
 $wgSecretKey = getenv('WGSECRETKEY');
 
@@ -122,10 +119,6 @@ $wgRightsIcon = "";
 # Path to the GNU diff3 utility. Used for conflict resolution.
 $wgDiff3 = "/usr/bin/diff3";
 
-# The following permissions were set based on your choice in the installer
-$wgGroupPermissions["*"]["createaccount"] = false;
-$wgGroupPermissions["*"]["edit"] = false;
-
 ## Default skin: you can change the default skin. Use the internal symbolic
 ## names, e.g. 'vector' or 'monobook':
 $wgDefaultSkin = "vector";
@@ -141,3 +134,150 @@ wfLoadSkin( 'Vector' );
 # End of automatically generated settings.
 # Add more configuration options below.
 
+#==================================================================
+# Captcha
+wfLoadExtensions([ 'ConfirmEdit' ]);
+wfLoadExtensions([ 'ConfirmEdit/QuestyCaptcha' ]);
+$wgCaptchaClass = 'QuestyCaptcha';
+
+$wgCaptchaQuestions = [
+    "Combien de cantons ont le français comme langue officielle? <a href=\"https://wikiromandie.org/index.php?title=Romandie\" alt=\"Cantons parlant le français\">Cantons de la Romandie</a><br><i>Écrire la réponse en toute lettres minuscule.</i>" => "sept"
+];
+
+#==================================================================
+# Infobox
+wfLoadExtension( 'Scribunto' );
+$wgScribuntoDefaultEngine = 'luastandalone';
+
+#==================================================================
+# <ref> via Cite
+wfLoadExtension( 'Cite' );
+
+#==================================================================
+#= GROUPES
+
+# Groupe 0 : Pas connecté
+
+$wgGroupPermissions['*']['read'] = true;              // Lire
+$wgGroupPermissions['*']['edit'] = false;              // Modifier article
+$wgGroupPermissions['*']['createpage'] = false;        // Créer nouvel article
+$wgGroupPermissions['*']['editmytalk'] = false;        // Débattre (pages de discussion)
+$wgGroupPermissions['*']['talk'] = false;              // Débattre (discussion publique)
+$wgGroupPermissions['*']['votepages'] = false;         // Voter (si plugin nécessaire)
+$wgGroupPermissions['*']['delete'] = false;           // Supprimer page article
+$wgGroupPermissions['*']['createportal'] = false;      // Créer portail (si extension nécessaire)
+$wgGroupPermissions['*']['editportal'] = false;        // Modifier portail (si extension nécessaire)
+$wgGroupPermissions['*']['protect'] = false;          // Activer sécurité page (protéger page)
+$wgGroupPermissions['*']['block'] = false;            // Bloquer utilisateur
+$wgGroupPermissions['*']['undelete'] = false;         // Restaurer version précédente
+
+
+# Groupe 1 : Connecté, pas confirmé par mail
+
+$wgGroupPermissions['user']['read'] = true;              // Lire
+$wgGroupPermissions['user']['edit'] = false;              // Modifier article
+$wgGroupPermissions['user']['createpage'] = false;        // Créer nouvel article
+$wgGroupPermissions['user']['editmytalk'] = false;        // Débattre (pages de discussion)
+$wgGroupPermissions['user']['talk'] = false;              // Débattre (discussion publique)
+$wgGroupPermissions['user']['votepages'] = false;         // Voter (si plugin nécessaire)
+$wgGroupPermissions['user']['delete'] = false;           // Supprimer page article
+$wgGroupPermissions['user']['createportal'] = false;      // Créer portail (si extension nécessaire)
+$wgGroupPermissions['user']['editportal'] = false;        // Modifier portail (si extension nécessaire)
+$wgGroupPermissions['user']['protect'] = false;          // Activer sécurité page (protéger page)
+$wgGroupPermissions['user']['block'] = false;            // Bloquer utilisateur
+$wgGroupPermissions['user']['undelete'] = false;         // Restaurer version précédente
+
+
+# Groupe 2 : Connecté, confirmé par mail
+
+$wgGroupPermissions['confirmed']['read'] = true;              // Lire
+$wgGroupPermissions['confirmed']['edit'] = true;              // Modifier article
+$wgGroupPermissions['confirmed']['createpage'] = false;        // Créer nouvel article
+$wgGroupPermissions['confirmed']['editmytalk'] = false;        // Débattre (pages de discussion)
+$wgGroupPermissions['confirmed']['talk'] = false;              // Débattre (discussion publique)
+$wgGroupPermissions['confirmed']['votepages'] = false;         // Voter (si plugin nécessaire)
+$wgGroupPermissions['confirmed']['delete'] = false;           // Supprimer page article
+$wgGroupPermissions['confirmed']['createportal'] = false;      // Créer portail (si extension nécessaire)
+$wgGroupPermissions['confirmed']['editportal'] = false;        // Modifier portail (si extension nécessaire)
+$wgGroupPermissions['confirmed']['protect'] = false;          // Activer sécurité page (protéger page)
+$wgGroupPermissions['confirmed']['block'] = false;            // Bloquer utilisateur
+$wgGroupPermissions['confirmed']['undelete'] = false;         // Restaurer version précédente
+
+
+# Groupe 3.1 : Individu
+
+$wgGroupPermissions['individu']['read'] = true;              // Lire
+$wgGroupPermissions['individu']['edit'] = true;              // Modifier article
+$wgGroupPermissions['individu']['createpage'] = true;        // Créer nouvel article
+$wgGroupPermissions['individu']['editmytalk'] = true;        // Débattre (pages de discussion)
+$wgGroupPermissions['individu']['talk'] = true;              // Débattre (discussion publique)
+$wgGroupPermissions['individu']['votepages'] = true;         // Voter (si plugin nécessaire)
+$wgGroupPermissions['individu']['delete'] = false;           // Supprimer page article
+$wgGroupPermissions['individu']['createportal'] = false;      // Créer portail (si extension nécessaire)
+$wgGroupPermissions['individu']['editportal'] = true;        // Modifier portail (si extension nécessaire)
+$wgGroupPermissions['individu']['protect'] = true;          // Activer sécurité page (protéger page)
+$wgGroupPermissions['individu']['block'] = false;            // Bloquer utilisateur
+$wgGroupPermissions['individu']['undelete'] = false;         // Restaurer version précédente
+
+
+# Groupe 3.2 : Association
+
+$wgGroupPermissions['association']['read'] = true;              // Lire
+$wgGroupPermissions['association']['edit'] = true;              // Modifier article
+$wgGroupPermissions['association']['createpage'] = true;        // Créer nouvel article
+$wgGroupPermissions['association']['editmytalk'] = true;        // Débattre (pages de discussion)
+$wgGroupPermissions['association']['talk'] = true;              // Débattre (discussion publique)
+$wgGroupPermissions['association']['votepages'] = true;         // Voter (si plugin nécessaire)
+$wgGroupPermissions['association']['delete'] = false;           // Supprimer page article
+$wgGroupPermissions['association']['createportal'] = false;      // Créer portail (si extension nécessaire)
+$wgGroupPermissions['association']['editportal'] = true;        // Modifier portail (si extension nécessaire)
+$wgGroupPermissions['association']['protect'] = true;          // Activer sécurité page (protéger page)
+$wgGroupPermissions['association']['block'] = false;            // Bloquer utilisateur
+$wgGroupPermissions['association']['undelete'] = false;         // Restaurer version précédente
+
+
+# Groupe 3.3 : Entreprise
+
+$wgGroupPermissions['entreprise']['read'] = true;              // Lire
+$wgGroupPermissions['entreprise']['edit'] = true;              // Modifier article
+$wgGroupPermissions['entreprise']['createpage'] = true;        // Créer nouvel article
+$wgGroupPermissions['entreprise']['editmytalk'] = true;        // Débattre (pages de discussion)
+$wgGroupPermissions['entreprise']['talk'] = true;              // Débattre (discussion publique)
+$wgGroupPermissions['entreprise']['votepages'] = false;         // Voter (si plugin nécessaire)
+$wgGroupPermissions['entreprise']['delete'] = false;           // Supprimer page article
+$wgGroupPermissions['entreprise']['createportal'] = false;      // Créer portail (si extension nécessaire)
+$wgGroupPermissions['entreprise']['editportal'] = true;        // Modifier portail (si extension nécessaire)
+$wgGroupPermissions['entreprise']['protect'] = true;          // Activer sécurité page (protéger page)
+$wgGroupPermissions['entreprise']['block'] = false;            // Bloquer utilisateur
+$wgGroupPermissions['entreprise']['undelete'] = false;         // Restaurer version précédente
+
+
+# Groupe 3.4 : État
+
+$wgGroupPermissions['etat']['read'] = true;              // Lire
+$wgGroupPermissions['etat']['edit'] = true;              // Modifier article
+$wgGroupPermissions['etat']['createpage'] = true;        // Créer nouvel article
+$wgGroupPermissions['etat']['editmytalk'] = true;        // Débattre (pages de discussion)
+$wgGroupPermissions['etat']['talk'] = true;              // Débattre (discussion publique)
+$wgGroupPermissions['etat']['votepages'] = false;         // Voter (si plugin nécessaire)
+$wgGroupPermissions['etat']['delete'] = false;           // Supprimer page article
+$wgGroupPermissions['etat']['createportal'] = false;      // Créer portail (si extension nécessaire)
+$wgGroupPermissions['etat']['editportal'] = true;        // Modifier portail (si extension nécessaire)
+$wgGroupPermissions['etat']['protect'] = true;          // Activer sécurité page (protéger page)
+$wgGroupPermissions['etat']['block'] = false;            // Bloquer utilisateur
+$wgGroupPermissions['etat']['undelete'] = false;         // Restaurer version précédente
+
+# Groupe 3.5 : Admin contenu
+
+$wgGroupPermissions['admincontenu']['read'] = true;              // Lire
+$wgGroupPermissions['admincontenu']['edit'] = true;              // Modifier article
+$wgGroupPermissions['admincontenu']['createpage'] = true;        // Créer nouvel article
+$wgGroupPermissions['admincontenu']['editmytalk'] = true;        // Débattre (pages de discussion)
+$wgGroupPermissions['admincontenu']['talk'] = false;              // Débattre (discussion publique)
+$wgGroupPermissions['admincontenu']['votepages'] = false;         // Voter (si plugin nécessaire)
+$wgGroupPermissions['admincontenu']['delete'] = true;           // Supprimer page article
+$wgGroupPermissions['admincontenu']['createportal'] = true;      // Créer portail (si extension nécessaire)
+$wgGroupPermissions['admincontenu']['editportal'] = true;        // Modifier portail (si extension nécessaire)
+$wgGroupPermissions['admincontenu']['protect'] = true;          // Activer sécurité page (protéger page)
+$wgGroupPermissions['admincontenu']['block'] = true;            // Bloquer utilisateur
+$wgGroupPermissions['admincontenu']['undelete'] = true;         // Restaurer version précédente

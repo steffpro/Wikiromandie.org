@@ -135,6 +135,10 @@ wfLoadSkin( 'Vector' );
 # Add more configuration options below.
 
 #==================================================================
+# VisualEditor
+wfLoadExtension( 'VisualEditor' );
+
+#==================================================================
 # Captcha
 wfLoadExtensions([ 'ConfirmEdit' ]);
 wfLoadExtensions([ 'ConfirmEdit/QuestyCaptcha' ]);

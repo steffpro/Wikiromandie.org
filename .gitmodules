@@ -158,3 +158,11 @@
 	path = vendor
 	url = https://gerrit.wikimedia.org/r/mediawiki/vendor
 	branch = REL1_44
+[submodule "extensions/Wikibase"]
+	path = extensions/Wikibase
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/Wikibase
+	branch = REL1_44
+[submodule "extensions/JsonConfig"]
+	path = extensions/JsonConfig
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/JsonConfig
+	branch = REL1_44

@@ -176,6 +176,19 @@ wfLoadExtension( 'Cite' );
 wfLoadExtension( 'ParserFunctions' );
 $wgPFEnableStringFunctions = true;
 
+# TemplateStyles
+wfLoadExtension( 'TemplateStyles' );
+
+# WikiEditor
+wfLoadExtension( 'WikiEditor' );
+
+# SyntaxHighlight_GeSHi
+wfLoadExtension( 'SyntaxHighlight_GeSHi' );
+
+# CodeEditor
+wfLoadExtension( 'CodeEditor' );
+$wgDefaultUserOptions['usebetatoolbar'] = 1; // user option provided by WikiEditor extension
+
 #==================================================================
 #= GROUPES
 

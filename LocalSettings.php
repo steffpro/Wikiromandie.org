@@ -223,6 +223,9 @@ $wgJsonConfigs['Map.JsonConfig']['remote'] = [
 ];
 #=============================================================
 
+# Wikibase
+wfLoadExtension( 'WikibaseClient', "$IP/extensions/Wikibase/extension-client.json" );
+require_once "$IP/extensions/Wikibase/client/ExampleSettings.php";
 
 #==================================================================
 #= GROUPES

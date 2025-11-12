@@ -161,7 +161,7 @@
 [submodule "extensions/Wikibase"]
 	path = extensions/Wikibase
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/Wikibase
-	branch = REL1_44
+	branch = REL1_43
 [submodule "extensions/JsonConfig"]
 	path = extensions/JsonConfig
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/JsonConfig

@@ -1,0 +1,9 @@
+{
+  "steps": {
+    "composer-update": {
+      "commands": [
+        "composer update --no-interaction --optimize-autoloader"
+      ]
+    }
+  }
+}

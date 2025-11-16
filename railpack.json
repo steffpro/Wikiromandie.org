@@ -1,6 +1,9 @@
 {
   "steps": {
     "composer-update": {
+      "inputs": [
+        { "step": "build" }
+      ],
       "commands": [
         "composer update --no-interaction --optimize-autoloader"
       ]

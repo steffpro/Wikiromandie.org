@@ -235,6 +235,7 @@ wfLoadExtension( 'TemplateData' );
 
 # CirrusSearch
 wfLoadExtension( 'CirrusSearch' );
+$wgCirrusSearchServers = [ getenv('ELASTICSEARCHSERVER') ];
 
 # Elastica
 wfLoadExtension( 'Elastica' );

@@ -233,6 +233,12 @@ require_once "$IP/extensions/Wikibase/client/ExampleSettings.php";
 # TemplateData
 wfLoadExtension( 'TemplateData' );
 
+# CirrusSearch
+wfLoadExtension( 'CirrusSearch' );
+
+# Elastica
+wfLoadExtension( 'Elastica' );
+
 #==================================================================
 #= GROUPES
 

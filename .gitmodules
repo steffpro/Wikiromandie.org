@@ -170,3 +170,11 @@
     path = extensions/VisualEditor/lib/ve
     url = https://gerrit.wikimedia.org/r/VisualEditor/VisualEditor
     branch = wmf/1.44.0-wmf.27
+[submodule "extensions/Elastica"]
+	path = extensions/Elastica
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/Elastica
+	branch = REL1_44
+[submodule "extensions/CirrusSearch"]
+	path = extensions/CirrusSearch
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/CirrusSearch
+	branch = REL1_44

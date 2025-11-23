@@ -170,7 +170,6 @@
 	path = extensions/CirrusSearch
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/CirrusSearch
 	branch = REL1_44
-	
 [submodule "extensions/Wikibase"]
 	path = extensions/Wikibase
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/Wikibase

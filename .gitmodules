@@ -171,3 +171,7 @@
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/CirrusSearch
 	branch = REL1_44
 	
+[submodule "extensions/Wikibase"]
+	path = extensions/Wikibase
+	url = https://github.com/wikimedia/mediawiki-extensions-Wikibase.git
+	branch = REL1_43

@@ -173,5 +173,5 @@
 	
 [submodule "extensions/Wikibase"]
 	path = extensions/Wikibase
-	url = https://github.com/wikimedia/mediawiki-extensions-Wikibase.git
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/Wikibase
 	branch = REL1_43

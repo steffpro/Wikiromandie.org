@@ -37,7 +37,7 @@ jobs:
           until [ $COUNT -ge $MAX_ATTEMPTS ]
           do
             echo "🔄 Attempt $((COUNT+1)) to checkout repository..."
-            git clone --recurse-submodules https://github.com/${GITHUB_REPOSITORY}.git . && break
+            git clone --recurse-submodules --shallow-submodules --depth 1 --branch INT_REL1_44 https://github.com/${GITHUB_REPOSITORY}.git . && break
             COUNT=$((COUNT+1))
             echo "⚠️ Checkout failed, retrying in 10s... ($COUNT/$MAX_ATTEMPTS)"
             sleep 10

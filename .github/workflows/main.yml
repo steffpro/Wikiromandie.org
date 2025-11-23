@@ -24,11 +24,12 @@ jobs:
       # ---------------------------------------------------
       # 🧬 2. Checkout repository avec retry
       # ---------------------------------------------------
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v5
         with:
           submodules: recursive
           ssh-user: steffpro
-          ssh-key: {{ secrets.SSH_PRIVATE_KEY }}
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ref: INT_REL1_44
 
       # ---------------------------------------------------
       # 🛠️ 3. Buildx

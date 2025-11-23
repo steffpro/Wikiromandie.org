@@ -8,29 +8,23 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu
 
     steps:
 
       # ---------------------------------------------------
-      # 🧹 1. Libérer jusqu'à 12 Go avant de commencer
+      # 🧹 1. Runner infos
       # ---------------------------------------------------
-      - name: Free disk space on GitHub runner
+      - name: Runner infos
         run: |
-          echo "🧹 Cleaning runner space..."
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf /opt/ghc
-          sudo rm -rf /usr/local/share/boost
-          sudo rm -rf /usr/local/lib/android
-          docker system prune -af || true
-          echo "Disk space after cleanup:"
           df -h
+          ip a 
+          hostname
 
       # ---------------------------------------------------
-      # 🧬 2. Clone repo + submodules mais minimal (shallow)
+      # 🧬 2. Checkout repository avec retry
       # ---------------------------------------------------
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           submodules: recursive
 
@@ -88,4 +82,3 @@ jobs:
             --push \
             --progress=plain \
             .
-

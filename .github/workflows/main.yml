@@ -11,41 +11,82 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code (with submodules)
+
+      # ---------------------------------------------------
+      # 🧹 1. Libérer jusqu'à 12 Go avant de commencer
+      # ---------------------------------------------------
+      - name: Free disk space on GitHub runner
+        run: |
+          echo "🧹 Cleaning runner space..."
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf /usr/local/lib/android
+          docker system prune -af || true
+          echo "Disk space after cleanup:"
+          df -h
+
+      # ---------------------------------------------------
+      # 🧬 2. Clone repo + submodules mais minimal (shallow)
+      # ---------------------------------------------------
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           submodules: recursive
-          fetch-depth: 0
+          fetch-depth: 1
 
+      # ---------------------------------------------------
+      # 🛠️ 3. Buildx
+      # ---------------------------------------------------
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      # ---------------------------------------------------
+      # 🚂 4. Installer Railpack
+      # ---------------------------------------------------
       - name: Install Railpack CLI
         run: |
           curl -sSL https://railpack.com/install.sh | sh
           export PATH="$HOME/.local/bin:$PATH"
 
+      # ---------------------------------------------------
+      # 📦 5. Générer le plan Railpack
+      # ---------------------------------------------------
       - name: Prepare Railpack build plan
         run: |
           export PATH="$HOME/.local/bin:$PATH"
-          railpack prepare . --plan-out ./railpack-plan.json --info-out ./railpack-info.json
+          railpack prepare . \
+            --plan-out ./railpack-plan.json \
+            --info-out ./railpack-info.json
 
+      # ---------------------------------------------------
+      # 🔐 6. Login DockerHub
+      # ---------------------------------------------------
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build & Push Docker image to Docker Hub
+      # ---------------------------------------------------
+      # 🧱 7. Build + push + cache remote
+      # ---------------------------------------------------
+      - name: Build & Push Docker image
         run: |
           export IMAGE_NAME="${{ secrets.DOCKERHUB_USERNAME }}/wikiromandie"
           export TAG="${{ github.sha }}"
+
+          echo "🚀 Building image: $IMAGE_NAME:$TAG"
 
           docker buildx build \
             --build-arg BUILDKIT_SYNTAX="ghcr.io/railwayapp/railpack-frontend" \
             -f ./railpack-plan.json \
             --platform linux/amd64 \
+            --cache-from=type=registry,ref=$IMAGE_NAME:buildcache \
+            --cache-to=type=registry,ref=$IMAGE_NAME:buildcache,mode=max \
             --tag "$IMAGE_NAME:$TAG" \
             --tag "$IMAGE_NAME:latest" \
             --push \
+            --progress=plain \
             .
+

@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v5
         with:
           submodules: recursive
-          ssh-user: steffpro
+          ssh-user: steff.pro@bluewin.ch
           ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
           ref: INT_REL1_44
 

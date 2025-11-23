@@ -24,7 +24,7 @@ jobs:
       # ---------------------------------------------------
       # 🧬 2. Checkout repository avec retry
       # ---------------------------------------------------
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           submodules: recursive
 

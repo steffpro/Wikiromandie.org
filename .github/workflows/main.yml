@@ -28,7 +28,7 @@ jobs:
         with:
           submodules: recursive
           ssh-user: steffpro
-          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-key: {{ secrets.SSH_PRIVATE_KEY }}
 
       # ---------------------------------------------------
       # 🛠️ 3. Buildx

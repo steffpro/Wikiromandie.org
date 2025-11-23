@@ -27,12 +27,21 @@ jobs:
           df -h
 
       # ---------------------------------------------------
-      # 🧬 2. Clone repo + submodules mais minimal (shallow)
+      # 🧬 2. Checkout repository avec retry
       # ---------------------------------------------------
-      - name: Checkout repository
-        uses: actions/checkout@v5
-        with:
-          submodules: recursive
+      - name: Checkout repository with retry
+        run: |
+          set -e
+          MAX_ATTEMPTS=3
+          COUNT=0
+          until [ $COUNT -ge $MAX_ATTEMPTS ]
+          do
+            echo "🔄 Attempt $((COUNT+1)) to checkout repository..."
+            git clone --recurse-submodules --shallow-submodules --depth 1 https://github.com/${GITHUB_REPOSITORY}.git . && break
+            COUNT=$((COUNT+1))
+            echo "⚠️ Checkout failed, retrying in 10s... ($COUNT/$MAX_ATTEMPTS)"
+            sleep 10
+          done
 
       # ---------------------------------------------------
       # 🛠️ 3. Buildx
@@ -88,4 +97,3 @@ jobs:
             --push \
             --progress=plain \
             .
-

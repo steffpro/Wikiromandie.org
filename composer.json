@@ -84,7 +84,6 @@
 		"wikimedia/xmp-reader": "0.9.4",
 		"zordius/lightncandy": "1.2.6",
 		"ext-apcu": "*",
-		"ext-imagick": "*",
 		"ext-mysqli": "*"
 	},
 	"require-dev": {

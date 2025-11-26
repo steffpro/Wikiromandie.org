@@ -22,6 +22,7 @@ jobs:
           hostname
           git config --global url.https://github.com/wmde/WikibaseDataModelJavascript.git.insteadof https://phabricator.wikimedia.org/source/wikibase-data-model.git
           git config --global url.https://github.com/wmde/DataValuesJavaScript.git.insteadof https://phabricator.wikimedia.org/source/datavalues-javascript.git
+          git config --global url.https://github.com/wmde/Serialization.git.insteadof https://phabricator.wikimedia.org/source/wikibase-serialization.git
           
           
       # ---------------------------------------------------

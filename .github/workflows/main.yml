@@ -4,11 +4,18 @@ on:
   push:
     branches: [ "INT_REL1_44" ]
   pull_request:
-    branches: [ "INT_REL1_44" ]
+    branches: [ "PROD_REL1_44" ]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    env: 
+      RAILPACK_DEPLOY_APT_PACKAGES: "imagemagick vim ffmpeg"
 
     steps:
 
@@ -54,6 +61,7 @@ jobs:
       - name: Prepare Railpack build plan
         run: |
           export PATH="$HOME/.local/bin:$PATH"
+
           railpack prepare . \
             --plan-out ./railpack-plan.json \
             --info-out ./railpack-info.json

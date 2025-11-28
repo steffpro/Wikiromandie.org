@@ -79,6 +79,9 @@ $wgMemCachedServers = [];
 $wgEnableUploads = true;
 $wgUseImageMagick = true;
 $wgImageMagickConvertCommand = "/usr/bin/convert";
+# More file extensions allowed for upload
+$wgFileExtensions[] = 'mp4';
+$wgFileExtensions[] = 'mov';
 
 # InstantCommons allows wiki to use images from https://commons.wikimedia.org
 $wgUseInstantCommons = true;

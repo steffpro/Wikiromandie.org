@@ -174,3 +174,7 @@
 	path = extensions/Wikibase
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/Wikibase
 	branch = REL1_43
+[submodule "extensions/EmbedVideo"]
+	path = extensions/EmbedVideo
+	url = https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo.git
+	branch = REL1_43

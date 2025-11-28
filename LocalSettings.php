@@ -243,6 +243,9 @@ $wgCirrusSearchServers = [ getenv('ELASTICSEARCHSERVER') ];
 # Elastica
 wfLoadExtension( 'Elastica' );
 
+# EmbedVideo -- https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo
+wfLoadExtension("EmbedVideo");
+
 #==================================================================
 #= GROUPES
 

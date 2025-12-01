@@ -158,15 +158,23 @@
 	path = vendor
 	url = https://gerrit.wikimedia.org/r/mediawiki/vendor
 	branch = REL1_44
-[submodule "extensions/Wikibase"]
-	path = extensions/Wikibase
-	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/Wikibase
-	branch = REL1_43
 [submodule "extensions/JsonConfig"]
 	path = extensions/JsonConfig
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/JsonConfig
 	branch = REL1_44
-[submodule "extensions/VisualEditor/lib/ve"]
-    path = extensions/VisualEditor/lib/ve
-    url = https://gerrit.wikimedia.org/r/VisualEditor/VisualEditor
-    branch = wmf/1.44.0-wmf.27
+[submodule "extensions/Elastica"]
+	path = extensions/Elastica
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/Elastica
+	branch = REL1_44
+[submodule "extensions/CirrusSearch"]
+	path = extensions/CirrusSearch
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/CirrusSearch
+	branch = REL1_44
+[submodule "extensions/Wikibase"]
+	path = extensions/Wikibase
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/Wikibase
+	branch = REL1_43
+[submodule "extensions/EmbedVideo"]
+	path = extensions/EmbedVideo
+	url = https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo.git
+	branch = REL1_43

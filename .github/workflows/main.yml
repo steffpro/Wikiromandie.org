@@ -80,6 +80,7 @@ jobs:
         run: |
           BRANCH="${GITHUB_REF##*/}"
           TAG="${GITHUB_SHA}"
+          RAILPACK_DEPLOY_APT_PACKAGES="${RAILPACK_DEPLOY_APT_PACKAGES}"
 
           if [[ "$BRANCH" == "PROD_REL1_44" ]]; then
             IMAGE_NAME="${{ secrets.DOCKERHUB_USERNAME }}/wikiromandie"

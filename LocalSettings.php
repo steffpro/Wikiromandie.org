@@ -246,6 +246,17 @@ wfLoadExtension( 'Elastica' );
 # EmbedVideo -- https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo
 wfLoadExtension("EmbedVideo");
 
+# OpenGraphMeta -- https://www.mediawiki.org/wiki/Extension:OpenGraphMeta
+wfLoadExtension( 'OpenGraphMeta' );
+
+# Description2 -- https://www.mediawiki.org/wiki/Extension:Description2
+wfLoadExtension( 'Description2' );
+$wgEnableMetaDescriptionFunctions = true;
+
+# SemanticWiki -- https://github.com/SemanticMediaWiki/SemanticMediaWiki/blob/master/docs/INSTALL.md
+wfLoadExtension( 'SemanticMediaWiki' );
+enableSemantics( getenv('WGSITENAME') );
+
 #==================================================================
 #= GROUPES
 

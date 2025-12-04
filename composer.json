@@ -84,7 +84,8 @@
 		"wikimedia/xmp-reader": "0.9.4",
 		"zordius/lightncandy": "1.2.6",
 		"ext-apcu": "*",
-		"ext-mysqli": "*"
+		"ext-mysqli": "*",
+		"mediawiki/semantic-media-wiki": "^6.0.0"
 	},
 	"require-dev": {
 		"composer/spdx-licenses": "1.5.8",

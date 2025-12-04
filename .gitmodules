@@ -182,3 +182,7 @@
 	path = extensions/Description2
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/Description2
 	branch = REL1_44
+[submodule "extensions/OpenGraphMeta"]
+	path = extensions/OpenGraphMeta
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenGraphMeta
+	branch = REL1_44

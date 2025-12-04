@@ -56,6 +56,7 @@ jobs:
       - name: Prepare Railpack build plan
         run: |
           export PATH="$HOME/.local/bin:$PATH"
+          RAILPACK_DEPLOY_APT_PACKAGES="${RAILPACK_DEPLOY_APT_PACKAGES}"
           railpack prepare . \
             --plan-out ./railpack-plan.json \
             --info-out ./railpack-info.json
@@ -80,6 +81,7 @@ jobs:
         run: |
           BRANCH="${GITHUB_REF##*/}"
           TAG="${GITHUB_SHA}"
+          RAILPACK_DEPLOY_APT_PACKAGES="${RAILPACK_DEPLOY_APT_PACKAGES}"
 
           if [[ "$BRANCH" == "PROD_REL1_44" ]]; then
             IMAGE_NAME="${{ secrets.DOCKERHUB_USERNAME }}/wikiromandie"

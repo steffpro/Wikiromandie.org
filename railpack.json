@@ -1,12 +1,6 @@
 {
   "$schema": "https://schema.railpack.com",
-  "steps": {
-    "install-system-tools": {
-      "commands": [
-        "apt-get update -qq",
-        "apt-get install -y --no-install-recommends imagemagick vim apt-utils ffmpeg",
-        "rm -rf /var/lib/apt/lists/*"
-      ]
-    }
+  "deploy": {
+    "aptPackages": ["imagemagick", "vim", "ffmpeg"]
   }
 }

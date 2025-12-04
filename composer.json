@@ -85,7 +85,6 @@
 		"zordius/lightncandy": "1.2.6",
 		"ext-apcu": "*",
 		"ext-mysqli": "*",
-		"mediawiki/semantic-media-wiki": "~6.0",
 		"ext-curl": "*"
 	},
 	"require-dev": {

@@ -258,6 +258,9 @@ $wgEnableMetaDescriptionFunctions = true;
 wfLoadExtension( 'SemanticMediaWiki' );
 enableSemantics( getenv('WGSITENAME') );
 
+# Extension OGImage personnalisée
+wfLoadExtension( "OGImage" );
+
 #==================================================================
 #= GROUPES
 

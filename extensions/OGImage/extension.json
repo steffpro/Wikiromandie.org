@@ -1,0 +1,22 @@
+{
+    "name": "OGImage",
+    "version": "1.0.0",
+    "author": "WikiRomandie",
+    "url": "https://wikiromandie.org",
+    "descriptionmsg": "ogimage-desc",
+    "type": "parserhook",
+
+    "Hooks": {
+        "BeforePageDisplay": [
+            "OGImageHooks::onBeforePageDisplay"
+        ]
+    },
+
+    "AutoloadClasses": {
+        "OGImageHooks": "includes/OGImageHooks.php"
+    },
+
+    "requires": {
+        "MediaWiki": ">=1.35"
+    }
+}

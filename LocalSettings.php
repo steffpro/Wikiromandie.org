@@ -39,6 +39,7 @@ $wgLogos = [
 	'1x' => "$wgResourceBasePath/images/logos/wiki.svg",
 	'icon' => "$wgResourceBasePath/images/logos/wiki.svg",
 ];
+$wgFavicon = "$wgResourceBasePath/images/logos/favicon.ico";
 
 ## UPO means: this is also a user preference option
 
@@ -245,6 +246,21 @@ wfLoadExtension( 'Elastica' );
 
 # EmbedVideo -- https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo
 wfLoadExtension("EmbedVideo");
+
+# OpenGraphMeta -- https://www.mediawiki.org/wiki/Extension:OpenGraphMeta
+wfLoadExtension( 'OpenGraphMeta' );
+
+# Description2 -- https://www.mediawiki.org/wiki/Extension:Description2
+wfLoadExtension( 'Description2' );
+$wgEnableMetaDescriptionFunctions = true;
+
+# SemanticWiki -- https://github.com/SemanticMediaWiki/SemanticMediaWiki/blob/master/docs/INSTALL.md
+wfLoadExtension( 'SemanticMediaWiki' );
+enableSemantics( getenv('WGSITENAME') );
+
+# PageImages
+wfLoadExtension( 'PageImages' );
+$wgPageImagesOpenGraphFallbackImage = '/images/logos/wiki.svg';
 
 #==================================================================
 #= GROUPES

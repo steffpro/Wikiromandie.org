@@ -258,6 +258,9 @@ $wgEnableMetaDescriptionFunctions = true;
 wfLoadExtension( 'SemanticMediaWiki' );
 enableSemantics( getenv('WGSITENAME') );
 
+# PageImages
+wfLoadExtension( 'PageImages' );
+$wgPageImagesOpenGraphFallbackImage = '/images/logos/wiki.svg';
 
 #==================================================================
 #= GROUPES

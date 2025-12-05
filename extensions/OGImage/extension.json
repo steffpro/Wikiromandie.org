@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "author": "WikiRomandie",
     "url": "https://wikiromandie.org",
-    "descriptionmsg": "ogimage-desc",
-    "type": "parserhook",
+    "description": "Generate OpenGraph images cropped at 1200x630",
+    "manifest_version": 2,
 
     "Hooks": {
         "BeforePageDisplay": [
@@ -17,6 +17,6 @@
     },
 
     "requires": {
-        "MediaWiki": ">=1.35"
+        "MediaWiki": ">=1.39"
     }
 }

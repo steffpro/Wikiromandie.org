@@ -153,6 +153,24 @@ $wgSMTP = [
 ];
 
 #==================================================================
+#============ Indexation ============
+$wgNamespaceRobotPolicies[NS_USER] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_USER_TALK] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_TEMPLATE] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_TEMPLATE_TALK] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_CATEGORY] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_CATEGORY_TALK] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_PROJECT] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_PROJECT_TALK] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_FILE] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_FILE_TALK] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_HELP] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_HELP_TALK] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_MEDIAWIKI] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_MEDIAWIKI_TALK] = 'noindex, nofollow';
+
+
+#==================================================================
 #============ Extensions ============
 # Nuke
 wfLoadExtension( 'Nuke' );

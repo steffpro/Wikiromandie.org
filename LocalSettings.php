@@ -255,18 +255,13 @@ require_once "$IP/extensions/Wikibase/client/ExampleSettings.php";
 # TemplateData
 wfLoadExtension('TemplateData');
 
-# Elastica
+# Elastica -- https://www.mediawiki.org/wiki/Extension:Elastica
 wfLoadExtension('Elastica');
 
-# CirrusSearch
+# CirrusSearch -- https://www.mediawiki.org/wiki/Extension:CirrusSearch
 wfLoadExtension('CirrusSearch');
 $wgSearchType = 'CirrusSearch';
 $wgCirrusSearchServers = [getenv('ELASTICSEARCHSERVER')];
-$wgCirrusSearchServersOptions = [
-    'ssl' => [
-        'verify' => false
-    ]
-];
 
 # EmbedVideo -- https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo
 wfLoadExtension('EmbedVideo');

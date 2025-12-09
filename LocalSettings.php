@@ -11,8 +11,8 @@
 # https://www.mediawiki.org/wiki/Manual:Configuration_settings
 
 # Protect against web entry
-if ( !defined( 'MEDIAWIKI' ) ) {
-	exit;
+if (!defined('MEDIAWIKI')) {
+        exit;
 }
 
 ## Uncomment this to disable output compression
@@ -36,8 +36,8 @@ $wgResourceBasePath = $wgScriptPath;
 ## The URL paths to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
 $wgLogos = [
-	'1x' => "$wgResourceBasePath/images/logos/wiki.svg",
-	'icon' => "$wgResourceBasePath/images/logos/wiki.svg",
+        '1x' => "$wgResourceBasePath/images/logos/wiki.svg",
+        'icon' => "$wgResourceBasePath/images/logos/wiki.svg",
 ];
 $wgFavicon = "$wgResourceBasePath/images/logos/favicon.ico";
 
@@ -129,10 +129,10 @@ $wgDefaultSkin = "vector";
 
 # Enabled skins.
 # The following skins were automatically enabled:
-wfLoadSkin( 'MinervaNeue' );
-wfLoadSkin( 'MonoBook' );
-wfLoadSkin( 'Timeless' );
-wfLoadSkin( 'Vector' );
+wfLoadSkin('MinervaNeue');
+wfLoadSkin('MonoBook');
+wfLoadSkin('Timeless');
+wfLoadSkin('Vector');
 
 
 # End of automatically generated settings.
@@ -143,64 +143,82 @@ wfLoadSkin( 'Vector' );
 #============ MAIL ============
 # SMTP
 $wgSMTP = [
-    'host'      => getenv('SMTPHOST'),
-    'IDHost'    => getenv('SMTPIDHOST'),
-    'localhost' => getenv('SMTPLOCALHOST'),
-    'port'      => getenv('SMTPPORT'),
-    'auth'      => true,
-    'username'  => getenv('SMTPUSERNAME'),
-    'password'  => getenv('SMTPPASSWORD')
+        'host'      => getenv('SMTPHOST'),
+        'IDHost'    => getenv('SMTPIDHOST'),
+        'localhost' => getenv('SMTPLOCALHOST'),
+        'port'      => getenv('SMTPPORT'),
+        'auth'      => true,
+        'username'  => getenv('SMTPUSERNAME'),
+        'password'  => getenv('SMTPPASSWORD')
 ];
+
+#==================================================================
+#============ Indexation ============
+$wgNamespaceRobotPolicies[NS_USER] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_USER_TALK] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_TEMPLATE] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_TEMPLATE_TALK] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_CATEGORY] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_CATEGORY_TALK] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_PROJECT] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_PROJECT_TALK] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_FILE] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_FILE_TALK] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_HELP] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_HELP_TALK] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_MEDIAWIKI] = 'noindex, nofollow';
+$wgNamespaceRobotPolicies[NS_MEDIAWIKI_TALK] = 'noindex, nofollow';
+
 
 #==================================================================
 #============ Extensions ============
 # Nuke
-wfLoadExtension( 'Nuke' );
+wfLoadExtension('Nuke');
 
 # VisualEditor
-wfLoadExtension( 'VisualEditor' );
+wfLoadExtension('VisualEditor');
 
 # Captcha
-wfLoadExtensions([ 'ConfirmEdit' ]);
-wfLoadExtensions([ 'ConfirmEdit/QuestyCaptcha' ]);
+wfLoadExtensions(['ConfirmEdit']);
+wfLoadExtensions(['ConfirmEdit/QuestyCaptcha']);
 $wgCaptchaClass = 'QuestyCaptcha';
 
 $wgCaptchaQuestions = [
-    "Combien de cantons ont le français comme langue officielle? <a href=\"https://wikiromandie.org/index.php?title=Romandie\" alt=\"Cantons parlant le français\">Cantons de la Romandie</a><br><i>Écrire la réponse en toute lettres minuscule.</i>" => "sept"
+        "Combien de cantons ont le français comme langue officielle? <a href=\"https://wikiromandie.org/index.php?title=Romandie\" alt=\"Cantons parlant le français\">Cantons de la Romandie</a><br><i>Écrire la réponse en toute lettres minuscule.</i>" => "sept"
 ];
 
 # Infobox
-wfLoadExtension( 'Scribunto' );
+wfLoadExtension('Scribunto');
 $wgScribuntoDefaultEngine = 'luastandalone';
 
 # <ref> via Cite
-wfLoadExtension( 'Cite' );
+wfLoadExtension('Cite');
 
 # ParserFunctions
-wfLoadExtension( 'ParserFunctions' );
+wfLoadExtension('ParserFunctions');
 $wgPFEnableStringFunctions = true;
 
 # TemplateStyles
-wfLoadExtension( 'TemplateStyles' );
+wfLoadExtension('TemplateStyles');
 
 # WikiEditor
-wfLoadExtension( 'WikiEditor' );
+wfLoadExtension('WikiEditor');
 
 # SyntaxHighlight_GeSHi
-wfLoadExtension( 'SyntaxHighlight_GeSHi' );
+wfLoadExtension('SyntaxHighlight_GeSHi');
 
 # CodeEditor
-wfLoadExtension( 'CodeEditor' );
+wfLoadExtension('CodeEditor');
 $wgDefaultUserOptions['usebetatoolbar'] = 1; // user option provided by WikiEditor extension
 
 #=============================================================
 # JsonConfig
-wfLoadExtension( 'JsonConfig' );
+wfLoadExtension('JsonConfig');
 
 $wgJsonConfigEnableLuaSupport = true; // required to use JsonConfig in Lua
 $wgJsonConfigModels['Tabular.JsonConfig'] = 'JsonConfig\JCTabularContent';
-$wgJsonConfigs['Tabular.JsonConfig'] = [ 
-        'namespace' => 486, 
+$wgJsonConfigs['Tabular.JsonConfig'] = [
+        'namespace' => 486,
         'nsName' => 'Data',
         // page name must end in .tab, and contain at least one symbol
         'pattern' => '/.\.tab$/',
@@ -209,7 +227,7 @@ $wgJsonConfigs['Tabular.JsonConfig'] = [
 ];
 
 $wgJsonConfigModels['Map.JsonConfig'] = 'JsonConfig\JCMapDataContent';
-$wgJsonConfigs['Map.JsonConfig'] = [ 
+$wgJsonConfigs['Map.JsonConfig'] = [
         'namespace' => 486,
         'nsName' => 'Data',
         // page name must end in .map, and contain at least one symbol
@@ -219,7 +237,7 @@ $wgJsonConfigs['Map.JsonConfig'] = [
 ];
 $wgJsonConfigInterwikiPrefix = "commons";
 
-$wgJsonConfigs['Tabular.JsonConfig']['remote'] = [ 
+$wgJsonConfigs['Tabular.JsonConfig']['remote'] = [
         'url' => 'https://commons.wikimedia.org/w/api.php'
 ];
 $wgJsonConfigs['Map.JsonConfig']['remote'] = [
@@ -228,38 +246,44 @@ $wgJsonConfigs['Map.JsonConfig']['remote'] = [
 #=============================================================
 
 # Wikibase
-wfLoadExtension( 'WikibaseRepository', "$IP/extensions/Wikibase/extension-repo.json" );
+wfLoadExtension('WikibaseRepository', "$IP/extensions/Wikibase/extension-repo.json");
 require_once "$IP/extensions/Wikibase/repo/ExampleSettings.php";
 
-wfLoadExtension( 'WikibaseClient', "$IP/extensions/Wikibase/extension-client.json" );
+wfLoadExtension('WikibaseClient', "$IP/extensions/Wikibase/extension-client.json");
 require_once "$IP/extensions/Wikibase/client/ExampleSettings.php";
 
 # TemplateData
-wfLoadExtension( 'TemplateData' );
-
-# CirrusSearch
-wfLoadExtension( 'CirrusSearch' );
-$wgCirrusSearchServers = [ getenv('ELASTICSEARCHSERVER') ];
+wfLoadExtension('TemplateData');
 
 # Elastica
-wfLoadExtension( 'Elastica' );
+wfLoadExtension('Elastica');
+
+# CirrusSearch
+wfLoadExtension('CirrusSearch');
+$wgSearchType = 'CirrusSearch';
+$wgCirrusSearchServers = [getenv('ELASTICSEARCHSERVER')];
+$wgCirrusSearchServersOptions = [
+    'ssl' => [
+        'verify' => false
+    ]
+];
 
 # EmbedVideo -- https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo
-wfLoadExtension("EmbedVideo");
+wfLoadExtension('EmbedVideo');
 
 # OpenGraphMeta -- https://www.mediawiki.org/wiki/Extension:OpenGraphMeta
-wfLoadExtension( 'OpenGraphMeta' );
+wfLoadExtension('OpenGraphMeta');
 
 # Description2 -- https://www.mediawiki.org/wiki/Extension:Description2
-wfLoadExtension( 'Description2' );
+wfLoadExtension('Description2');
 $wgEnableMetaDescriptionFunctions = true;
 
 # SemanticWiki -- https://github.com/SemanticMediaWiki/SemanticMediaWiki/blob/master/docs/INSTALL.md
-wfLoadExtension( 'SemanticMediaWiki' );
-enableSemantics( getenv('WGSITENAME') );
+wfLoadExtension('SemanticMediaWiki');
+enableSemantics(getenv('WGSITENAME'));
 
 # PageImages
-wfLoadExtension( 'PageImages' );
+wfLoadExtension('PageImages');
 $wgPageImagesOpenGraphFallbackImage = '/images/logos/wiki.svg';
 
 #==================================================================

@@ -251,6 +251,7 @@ require_once "$IP/extensions/Wikibase/repo/ExampleSettings.php";
 
 wfLoadExtension('WikibaseClient', "$IP/extensions/Wikibase/extension-client.json");
 require_once "$IP/extensions/Wikibase/client/ExampleSettings.php";
+$wgWBRepoSettings['enableEntitySearchUI'] = false;
 
 # TemplateData
 wfLoadExtension('TemplateData');
@@ -260,8 +261,17 @@ wfLoadExtension('Elastica');
 
 # CirrusSearch -- https://www.mediawiki.org/wiki/Extension:CirrusSearch
 wfLoadExtension('CirrusSearch');
-$wgSearchType = 'CirrusSearch';
 $wgCirrusSearchServers = [getenv('ELASTICSEARCHSERVER')];
+$wgSearchType = 'CirrusSearch';
+$wgCirrusSearchUseCompletionSuggester = true;
+$wgCirrusSearchCompletionSuggesterSubphrases = [
+  'build' => true,
+  'use' => true,
+  'type' => 'anywords',
+  'limit' => 10,
+];
+$wgCirrusSearchCompletionSettings = 'fuzzy_subphrases';
+
 
 # EmbedVideo -- https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo
 wfLoadExtension('EmbedVideo');

@@ -263,14 +263,17 @@ wfLoadExtension('Elastica');
 wfLoadExtension('CirrusSearch');
 $wgCirrusSearchServers = [getenv('ELASTICSEARCHSERVER')];
 $wgSearchType = 'CirrusSearch';
+$wgCirrusSearchUsePhraseSuggest = true;
 $wgCirrusSearchUseCompletionSuggester = true;
+$wgCirrusSearchEnablePrefixSearch = true;
+$wgCirrusSearchPrefixSearchStartsWithAnyWord = true;
 $wgCirrusSearchCompletionSuggesterSubphrases = [
   'build' => true,
   'use' => true,
   'type' => 'anywords',
   'limit' => 10,
 ];
-$wgCirrusSearchCompletionSettings = 'fuzzy_subphrases';
+$wgCirrusSearchCompletionSettings = 'fuzzy-subphrases';
 
 
 # EmbedVideo -- https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo

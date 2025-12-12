@@ -83,7 +83,7 @@ Thumbs.db
 *.iml
 .metadata*
 .settings
-/favicon.ico
+#/favicon.ico
 /static*
 /tags
 /.htaccess

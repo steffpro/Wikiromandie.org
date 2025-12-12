@@ -268,10 +268,10 @@ $wgCirrusSearchUseCompletionSuggester = true;
 $wgCirrusSearchEnablePrefixSearch = true;
 $wgCirrusSearchPrefixSearchStartsWithAnyWord = true;
 $wgCirrusSearchCompletionSuggesterSubphrases = [
-  'build' => true,
-  'use' => true,
-  'type' => 'anywords',
-  'limit' => 10,
+        'build' => true,
+        'use' => true,
+        'type' => 'anywords',
+        'limit' => 10,
 ];
 $wgCirrusSearchCompletionSettings = 'fuzzy-subphrases';
 

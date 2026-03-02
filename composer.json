@@ -206,7 +206,10 @@
 			"wikimedia/composer-merge-plugin": true,
 			"composer/installers": true,
 			"dealerdirect/phpcodesniffer-composer-installer": true
-		}
+		},
+		"audit": {
+            "ignore": ["PKSA-y2cr-5h3j-g3ys", "PKSA-2kqm-ps5x-s4f5"]
+        }
 	},
 	"extra": {
 		"merge-plugin": {

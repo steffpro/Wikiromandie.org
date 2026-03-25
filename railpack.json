@@ -2,5 +2,15 @@
   "$schema": "https://schema.railpack.com",
   "deploy": {
     "aptPackages": ["imagemagick", "vim", "ffmpeg"]
+  },
+	"steps": {
+    "composer-update": {
+      "inputs": [
+        { "step": "build" }
+      ],
+      "commands": [
+        "composer update --no-interaction --verbose --profile --no-dev --no-cache --optimize-autoloader --working-dir=/app"
+      ]
+    }
   }
 }

@@ -138,6 +138,8 @@ wfLoadSkin('Vector');
 # End of automatically generated settings.
 # Add more configuration options below.
 
+# Suppression des warnings
+$wgDeprecationReleaseLimit = '1.42';
 
 #==================================================================
 #============ MAIL ============

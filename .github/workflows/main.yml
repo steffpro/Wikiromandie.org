@@ -1,0 +1,97 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "INT_REL1_44", "PROD_REL1_44" ]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # ---------------------------------------------------
+      # 🧹 1. Runner infos
+      # ---------------------------------------------------
+      - name: Runner infos
+        run: |
+          df -h
+          ip a 
+          hostname
+          git config --global url."https://github.com/wmde/DataValuesJavaScript.git".insteadof "https://phabricator.wikimedia.org/source/datavalues-javascript.git"
+          git config --global url."https://github.com/wmde/WikibaseSerializationJavaScript.git".insteadof "https://phabricator.wikimedia.org/source/wikibase-serialization.git"
+          git config --global url."https://github.com/wmde/WikibaseDataModelJavaScript.git".insteadof "https://phabricator.wikimedia.org/source/wikibase-data-model.git"
+
+      # ---------------------------------------------------
+      # 🧬 2. Checkout
+      # ---------------------------------------------------
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+
+      # ---------------------------------------------------
+      # 🛠️ 3. Buildx
+      # ---------------------------------------------------
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # ---------------------------------------------------
+      # 🚂 4. Installer Railpack
+      # ---------------------------------------------------
+      - name: Install Railpack CLI
+        run: |
+          curl -sSL https://railpack.com/install.sh | sh
+          export PATH="$HOME/.local/bin:$PATH"
+
+      # ---------------------------------------------------
+      # 📦 5. Générer le plan Railpack
+      # ---------------------------------------------------
+      - name: Prepare Railpack build plan
+        run: |
+          export PATH="$HOME/.local/bin:$PATH"
+          railpack prepare . \
+            --plan-out ./railpack-plan.json \
+            --info-out ./railpack-info.json
+
+      # ---------------------------------------------------
+      # 🔐 6. Login suivant la branche
+      # ---------------------------------------------------
+      - name: Login to registry (depending on branch)
+        run: |
+          if [[ "${GITHUB_REF##*/}" == "PROD_REL1_44" ]]; then
+            echo "🔐 Logging into Docker Hub (production)"
+            echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+          else
+            echo "🔐 Logging into custom registry (integration)"
+            echo "${{ secrets.CUSTOM_REGISTRY_PASSWORD }}" | docker login ${{ secrets.CUSTOM_REGISTRY_URL }} -u "${{ secrets.CUSTOM_REGISTRY_USER }}" --password-stdin
+          fi
+
+      # ---------------------------------------------------
+      # 🧱 7. Build + Push suivant la branche
+      # ---------------------------------------------------
+      - name: Build & Push Docker image
+        run: |
+          BRANCH="${GITHUB_REF##*/}"
+          TAG="${GITHUB_SHA}"
+
+          if [[ "$BRANCH" == "PROD_REL1_44" ]]; then
+            IMAGE_NAME="${{ secrets.DOCKERHUB_USERNAME }}/wikiromandie"
+            echo "🚀 Building PROD image: $IMAGE_NAME:$TAG"
+          else
+            IMAGE_NAME="${{ secrets.CUSTOM_REGISTRY_REPO }}"
+            echo "🚀 Building INT image: $IMAGE_NAME:$TAG"
+          fi
+
+          docker buildx build \
+            --build-arg BUILDKIT_SYNTAX="ghcr.io/railwayapp/railpack-frontend" \
+            -f ./railpack-plan.json \
+            --platform linux/amd64 \
+            --tag "$IMAGE_NAME:$TAG" \
+            --tag "$IMAGE_NAME:latest" \
+            --push \
+            --progress=plain \
+            .

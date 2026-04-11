@@ -47,7 +47,7 @@ sftp-config.json
 /images/tmp
 /maintenance/.mweval_history
 /maintenance/.mwsql_history
-/LocalSettings.php
+#/LocalSettings.php
 /includes/PlatformSettings.php
 
 # Building & testing
@@ -67,7 +67,7 @@ phpunit.xml
 
 # Composer
 /composer.lock
-/composer.local.json
+#/composer.local.json
 /composer.phar
 
 # Operating systems
@@ -83,7 +83,7 @@ Thumbs.db
 *.iml
 .metadata*
 .settings
-/favicon.ico
+#/favicon.ico
 /static*
 /tags
 /.htaccess

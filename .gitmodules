@@ -178,3 +178,7 @@
 	path = extensions/OpenGraphMeta
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenGraphMeta
 	branch = REL1_45
+[submodule "extensions/Wikibase"]
+	path = extensions/Wikibase
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/Wikibase
+	branch = REL1_45

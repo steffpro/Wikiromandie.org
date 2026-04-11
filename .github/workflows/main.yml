@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "INT_REL1_44", "PROD_REL1_44" ]
+    branches: [ "INT_REL1_45", "PROD_REL1_45" ]
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -62,7 +62,7 @@ jobs:
       # ---------------------------------------------------
       - name: Login to registry (depending on branch)
         run: |
-          if [[ "${GITHUB_REF##*/}" == "PROD_REL1_44" ]]; then
+          if [[ "${GITHUB_REF##*/}" == "PROD_REL1_45" ]]; then
             echo "🔐 Logging into Docker Hub (production)"
             echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
           else
@@ -78,7 +78,7 @@ jobs:
           BRANCH="${GITHUB_REF##*/}"
           TAG="${GITHUB_SHA}"
 
-          if [[ "$BRANCH" == "PROD_REL1_44" ]]; then
+          if [[ "$BRANCH" == "PROD_REL1_45" ]]; then
             IMAGE_NAME="${{ secrets.DOCKERHUB_USERNAME }}/wikiromandie"
             echo "🚀 Building PROD image: $IMAGE_NAME:$TAG"
           else

@@ -10,7 +10,7 @@
       ],
       "commands": [
         "composer update --no-interaction --verbose --profile --no-dev --no-cache --optimize-autoloader --working-dir=/app",
-        "sed -i -E \"s|parent::__construct\\( *CONTENT_MODEL_SMW_SCHEMA *, *\\[[^]]*\\] *\\)|parent::__construct( CONTENT_MODEL_SMW_SCHEMA, null )|\" /app/extensions/SemanticMediaWiki/src/MediaWiki/Content/SchemaContentHandler.php || true"
+        "sh /app/patches/smw-mw145patch.sh"
       ]
     }
   }

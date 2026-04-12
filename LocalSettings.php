@@ -139,7 +139,7 @@ wfLoadSkin('Vector');
 # Add more configuration options below.
 
 # Suppression des warnings
-$wgDeprecationReleaseLimit = '1.42';
+$wgDeprecationReleaseLimit = '1.41';
 
 #==================================================================
 #============ MAIL ============

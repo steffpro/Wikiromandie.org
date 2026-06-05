@@ -9,8 +9,7 @@
         { "step": "build" }
       ],
       "commands": [
-        "composer update --no-interaction --verbose --profile --no-dev --no-cache --optimize-autoloader --working-dir=/app",
-        "sh /app/patches/smw-mw145patch.sh"
+        "composer update --no-interaction --verbose --profile --no-dev --no-cache --optimize-autoloader --working-dir=/app"
       ]
     }
   }
